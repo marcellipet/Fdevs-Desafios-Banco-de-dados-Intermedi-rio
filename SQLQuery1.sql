@@ -44,3 +44,39 @@ insert into Cliente (PrimeiroNome, UltimoNome) values
 ('Carlos', 'Silva'),
 ('Maria', 'Souza'),
 ('João', 'Pereira');
+
+
+select 
+    P.Nome as NomeProduto,
+    C.Nome as Categoria,
+    E.Quantidade as QuantidadeEstoque
+from 
+    Produto P
+join 
+    ProdutoCategoria C on P.IdCategoria = C.Id
+join 
+    ProdutoEstoque E on P.Id = E.IdProduto;
+
+alter table Cliente
+add 
+    Titulo varchar(10),   
+    MI varchar(1);  
+
+insert into Cliente (Titulo, PrimeiroNome, MI, UltimoNome) values
+('Sr.', 'Carlos', 'A', 'Silva'),
+('Sra.', 'Maria', null, 'Souza'),
+('Dr.', 'João', '', 'Pereira'),
+('Sr.', 'Lucas', 'B', 'Mendes'),
+('Sra.', 'Ana', 'C', 'Ferreira'),
+('Sr.', 'Pedro', null, 'Alves');
+
+select 
+    Id,
+    case 
+        when MI IS NULL OR MI = '' then 
+            concat(Titulo, ' ', PrimeiroNome, ' ', UltimoNome)
+        else 
+            concat(Titulo, ' ', PrimeiroNome, ' ', MI, '. ', UltimoNome)
+    end as NomeCompleto
+from 
+    Cliente;
