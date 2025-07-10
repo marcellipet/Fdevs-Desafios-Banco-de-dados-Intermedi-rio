@@ -1,1 +1,1 @@
-# Fdevs-Desafios-Banco-de-dados-Intermedi-rio
+# Fdevs-Desafios-Banco-de-dados-Intermediario
